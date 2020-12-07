@@ -4,15 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux'
+import { Provider } from 'react-redux'
 
 //reducer is a function that returns a state object
+const rootReducer = () => { return { notes: [] } }
+
+const store = createStore(rootReducer)
+
+const state = store.getState()
 
 
-const store = createStore()
+console.log("Store: ", store)
 
 ReactDOM.render(
-    <App />,
+  <Provider store={store} >
 
+    <App />
+  </Provider>
+,
   document.getElementById('root')
 );
 
